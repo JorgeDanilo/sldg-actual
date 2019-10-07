@@ -8,37 +8,38 @@
 	<meta charset="UTF-8" />
 	<!-- criar uma pasta resources dentro do webapp e depois a pasta sldgs com os estilos. -->
 	<h:outputStylesheet library="sldg" name="estilo.css" />
-	<h:outputScript library="js" name="jquery.maskMoney.js"/>
+	<h:outputScript library="js" name="jquery.maskMoney.js" />
 
 </h:head>
 
 <h:body>
+
 	<header>
 		<title>Gestão Empresas</title>
 		<h:graphicImage library="sldg" name="logotipolanches.png" width="80"
 			height="80" />
 	</header>
 
-<h:form>
-	<p:menubar id="menubar">
-		<p:submenu label="Cadastro" icon="ui-icon-document">
-			<p:submenu label="Novo" icon="ui-icon-document">
-				<p:menuitem value="Produtos" url="cadastraProdutos.jsf" />
-				<p:menuitem value="Usuários" url="cadastraUsuarios.jsf" />
+	<h:form>
+		<p:menubar id="menubar" rendered="#{loginController.isLogged}">
+			<p:submenu label="Cadastro" icon="ui-icon-document">
+				<p:submenu label="Novo" icon="ui-icon-document">
+					<p:menuitem value="Produtos" url="cadastraProdutos.jsf" />
+					<p:menuitem value="Usuários" url="cadastraUsuarios.jsf" />
+				</p:submenu>
 			</p:submenu>
-		</p:submenu>
 
-		<p:submenu label="Pesquisa" icon="ui-icon-search">
-			<p:submenu label="Produtos" icon="ui-icon-search">
-				<p:menuitem value="Produtos" url="pesquisaProdutos.jsf" />
+			<p:submenu label="Pesquisa" icon="ui-icon-search">
+				<p:submenu label="Produtos" icon="ui-icon-search">
+					<p:menuitem value="Produtos" url="pesquisaProdutos.jsf" />
+				</p:submenu>
+				<p:submenu label="Clientes" icon="ui-icon-search">
+					<p:menuitem value="Usuários" url="listaUsuario.jsf" />
+				</p:submenu>
 			</p:submenu>
-			<p:submenu label="Clientes" icon="ui-icon-search">
-				<p:menuitem value="Usuários" url="listaUsuario.jsf" />
-			</p:submenu>
-		</p:submenu>
-	</p:menubar>
-		<p:commandButton action="#{loginController.sair}" value="Sair" />
-</h:form>
+		</p:menubar>
+		<p:commandButton action="#{loginController.sair}" rendered="#{loginController.isLogged}" value="Sair" />
+	</h:form>
 
 	<div id="conteudo">
 		<ui:insert name="corpo" />
@@ -57,12 +58,15 @@
 
 	<script>
 		function configurarMoeda() {
-			$(".moeda").maskMoney({decimal: ".", thousands: ".", allowZero: true});
+			$(".moeda").maskMoney({
+				decimal : ".",
+				thousands : ".",
+				allowZero : true
+			});
 		}
 		$(document).ready(function() {
-		  	configurarMoeda();
+			configurarMoeda();
 		});
-		
 	</script>
 </h:body>
 </html>

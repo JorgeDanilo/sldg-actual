@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 
-import com.sldg.erp.model.Produto;
+import com.sldg.erp.model.Product;
 import com.sldg.erp.repository.Produtos;
 import com.sldg.erp.util.Transacional;
 
@@ -19,7 +19,7 @@ public class ProdutoService implements Serializable {
 	private Produtos produtos;
 	
 	@Transacional
-	public void salvar(Produto produto) {
+	public void salvar(Product produto) {
 		this.produtos.guardar(produto);
 	}
 	

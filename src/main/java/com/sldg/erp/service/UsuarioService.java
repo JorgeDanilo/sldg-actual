@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 
-import com.sldg.erp.model.Usuario;
+import com.sldg.erp.model.User;
 import com.sldg.erp.repository.Usuarios;
 import com.sldg.erp.util.Transacional;
 
@@ -19,11 +19,11 @@ public class UsuarioService implements Serializable {
 	private Usuarios usuarios = new Usuarios();
 	
 	@Transacional
-	public void salvar(Usuario usuario) {
+	public void salvar(User usuario) {
 		usuarios.guardar(usuario);
 	}
 	
-	public void autenticar(Usuario usuario) {
+	public void autenticar(User usuario) {
 		if ("".equals(usuario.getSenha()) || "".equals(usuario.getEmail())) {
 			throw new RuntimeException("Usuário ou senhas não informado");
 		} else {
@@ -31,7 +31,7 @@ public class UsuarioService implements Serializable {
 		}
 	}
 	
-	public Usuario autenticar(String user, String senha) {
+	public User autenticar(String user, String senha) {
 		return usuarios.autenticar(user, senha);
 	}
 	

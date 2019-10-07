@@ -14,7 +14,7 @@ import javax.inject.Named;
 
 import org.primefaces.context.RequestContext;
 
-import com.sldg.erp.model.Usuario;
+import com.sldg.erp.model.User;
 import com.sldg.erp.repository.Usuarios;
 import com.sldg.erp.service.UsuarioService;
 import com.sldg.erp.util.FacesMessages;
@@ -31,9 +31,9 @@ public class UsuarioController implements Serializable {
 	@Inject
 	private UsuarioService usuarioService;
 
-	private Usuario usuarioEdicao = new Usuario();
+	private User usuarioEdicao = new User();
 	
-	private List<Usuario> todosUsuarios;
+	private List<User> todosUsuarios;
 	
 	@Inject
 	private Usuarios usuarios;
@@ -48,7 +48,7 @@ public class UsuarioController implements Serializable {
 	 * @since 18/11/2015
 	 */
 	public void preparaNovoCadastro() {
-		this.usuarioEdicao = new Usuario();
+		this.usuarioEdicao = new User();
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class UsuarioController implements Serializable {
 		
 		this.usuarioService.salvar(usuarioEdicao);
 		
-		usuarioEdicao = new Usuario();
+		usuarioEdicao = new User();
 		
 		messages.info("Usuário Cadastrado!");
 		
@@ -105,11 +105,11 @@ public class UsuarioController implements Serializable {
 
 
 
-	public Usuario getUsuarioEdicao() {
+	public User getUsuarioEdicao() {
 		return usuarioEdicao;
 	}
 
-	public void setUsuarioEdicao(Usuario usuarioEdicao) {
+	public void setUsuarioEdicao(User usuarioEdicao) {
 		this.usuarioEdicao = usuarioEdicao;
 	}
 
@@ -129,7 +129,7 @@ public class UsuarioController implements Serializable {
 		this.usuarios = usuarios;
 	}
 	 
-	 public List<Usuario> getTodosUsuarios() {
+	 public List<User> getTodosUsuarios() {
 		return todosUsuarios;
 	}
 	 

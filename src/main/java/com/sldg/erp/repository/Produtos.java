@@ -11,7 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import com.sldg.erp.model.Produto;
+import com.sldg.erp.model.Product;
 
 public class Produtos implements Serializable {
 
@@ -23,7 +23,7 @@ public class Produtos implements Serializable {
 	@Inject
 	private EntityManager manager;
 	
-	public Produto guardar(Produto produto) {
+	public Product guardar(Product produto) {
 		return this.manager.merge(produto);
 	}
 	
@@ -37,9 +37,9 @@ public class Produtos implements Serializable {
 	 * 
 	 * @return
 	 */
-	public List<Produto> listaProduto() {
+	public List<Product> listaProduto() {
 		Session session = (Session) this.manager.getDelegate();
-		Criteria criteria = session.createCriteria(Produto.class);
+		Criteria criteria = session.createCriteria(Product.class);
 		
 		return criteria.list();
 	}
@@ -55,9 +55,9 @@ public class Produtos implements Serializable {
 	 * @param produto
 	 * @return
 	 */
-	public List<Produto> pesquisaProdutos(Produto produto) {
+	public List<Product> pesquisaProdutos(Product produto) {
 		Session session = (Session) this.manager.getDelegate();
-		Criteria criteria = session.createCriteria(Produto.class);
+		Criteria criteria = session.createCriteria(Product.class);
 		criteria.add(Restrictions.ilike("nomeProduto", produto.getNomeProduto(), MatchMode.ANYWHERE));
 		criteria.add(Restrictions.ilike("marcaProduto", produto.getMarcaProduto(), MatchMode.ANYWHERE));
 		return criteria.list();

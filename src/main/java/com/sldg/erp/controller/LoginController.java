@@ -16,7 +16,7 @@ import org.jboss.weld.security.GetSystemPropertyAction;
 
 import javax.faces.context.ExternalContext;
 
-import com.sldg.erp.model.Usuario;
+import com.sldg.erp.model.User;
 import com.sldg.erp.repository.Usuarios;
 import com.sldg.erp.service.UsuarioService;
 
@@ -32,19 +32,20 @@ public class LoginController implements Serializable {
 	@Inject
 	private UsuarioService usuarioService;
 	
-	private Usuario usuario = new Usuario();
+	private User usuario = new User();
 	
 	public void autenticar() {
-		
 		getSubject().login(new UsernamePasswordToken(this.usuario.getEmail(), this.usuario.getSenha()));
-		
 		final ExternalContext cxt = this.getContext().getExternalContext();
-		
 		try {
 			cxt.redirect(cxt.getRequestContextPath() + "/pesquisaProdutos.jsf");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean getIsLogged() {
+		return false;
 	}
 
 	public Usuarios getUsuarios() {
@@ -63,11 +64,11 @@ public class LoginController implements Serializable {
 		this.usuarioService = usuarioService;
 	}
 
-	public Usuario getUsuario() {
+	public User getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
 	

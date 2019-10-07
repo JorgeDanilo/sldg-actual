@@ -13,7 +13,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import com.sldg.erp.model.Usuario;
+import com.sldg.erp.model.User;
 
 /**
  * @author DaniloGessica
@@ -25,9 +25,6 @@ import com.sldg.erp.model.Usuario;
  */
 public class Usuarios implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
@@ -37,21 +34,15 @@ public class Usuarios implements Serializable {
 	
 	EntityManager manger2 = factory.createEntityManager();
 	
-	/**
-	 * 
-	 * Metodo que retorna o codigo do usuario
-	 * @param codigo
-	 * @return
-	 */
-	public Usuario porCodigo(Long codigo) {
-		return manager.find(Usuario.class, codigo);
+	public User porCodigo(Long codigo) {
+		return manager.find(User.class, codigo);
 	}
 	
-	public Usuario autenticaUsuario(Usuario usuario) {
-		Query query = manager.createQuery("from Usuario u where u.email = :pemail and u.senha = :pcodigo");
-		query.setParameter("pemail", usuario.getEmail());
-		query.setParameter("pcodigo", usuario.getSenha());
-		return (Usuario) query.getResultList();
+	public User autenticaUsuario(User usuario) {
+		Query query = manager.createQuery("from User u where u.email = :pemail and u.senha = :pcodigo");
+		query.setParameter("pemail", usuario.getEmail().trim());
+		query.setParameter("pcodigo", usuario.getSenha().trim());
+		return (User) query.getResultList();
 	}
 	
 	/**
@@ -59,40 +50,40 @@ public class Usuarios implements Serializable {
 	 * @param usuario
 	 * @return
 	 */
-	public Usuario autentica(Usuario usuario) {
+	public User autentica(User usuario) {
 		Session session = (Session) manager.getDelegate();
-		Criteria criteria = session.createCriteria(Usuario.class);
-		criteria.add(Restrictions.eq("email", usuario.getEmail()));
-		criteria.add(Restrictions.eq("senha", usuario.getSenha()));
-		return (Usuario) criteria.uniqueResult();
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eq("email", usuario.getEmail().trim()));
+		criteria.add(Restrictions.eq("senha", usuario.getSenha().trim()));
+		return (User) criteria.uniqueResult();
 	}
 	
-	public Usuario autenticar(final String user, final String senha) {
+	public User autenticar(final String user, final String senha) {
 		manger2.getTransaction().begin();
 		Query query = manger2.createQuery("from Usuario u where u.email = :pemail and u.senha = :pcodigo");
 		query.setParameter("pemail", user);
 		query.setParameter("pcodigo", senha);
 		
-		return (Usuario) query.getSingleResult();
+		return (User) query.getSingleResult();
 		
 	}
 
-	public Usuario guardar(Usuario usuario) {
+	public User guardar(User usuario) {
 		return manager.merge(usuario);
 	}
 	
-	public List<Usuario> listaUsuario() {
-		Query query = manager.createQuery("from Usuario", Usuario.class);
+	public List<User> listaUsuario() {
+		Query query = manager.createQuery("from Usuario", User.class);
 		return query.getResultList();
 	}
 	
-	public List<Usuario> pesquisaUsuarios(Usuario usuario) {
+	public List<User> pesquisaUsuarios(User usuario) {
 
 		Query query = manager.createQuery("from Usuario where email = :pemail and codigo = :pcodigo");
 
 		query.setParameter("pemail", usuario.getEmail());
 		query.setParameter("pcodigo", usuario.getCodigo());
-		List<Usuario> usuarios = query.getResultList();
+		List<User> usuarios = query.getResultList();
 		
 		return usuarios;
 	}

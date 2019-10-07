@@ -10,7 +10,7 @@ import javax.inject.Named;
 
 import org.primefaces.context.RequestContext;
 
-import com.sldg.erp.model.Produto;
+import com.sldg.erp.model.Product;
 import com.sldg.erp.model.enuns.TipoCategoria;
 import com.sldg.erp.repository.Produtos;
 import com.sldg.erp.service.ProdutoService;
@@ -31,9 +31,9 @@ public class ProdutoController implements Serializable {
 	@Inject
 	private FacesMessages facesMessages;
 	
-	private List<Produto> todosProduto;
+	private List<Product> todosProduto;
 
-	private Produto produtoEdicao = new Produto();
+	private Product produtoEdicao = new Product();
 	
 	private Boolean marcarProduto;
 	
@@ -81,19 +81,19 @@ public class ProdutoController implements Serializable {
 		this.produtoService = produtoService;
 	}
 
-	public Produto getProdutoEdicao() {
+	public Product getProdutoEdicao() {
 		return produtoEdicao;
 	}
 
-	public void setProdutoEdicao(Produto produtoEdicao) {
+	public void setProdutoEdicao(Product produtoEdicao) {
 		this.produtoEdicao = produtoEdicao;
 	}
 	
-	public List<Produto> getTodosProduto() {
+	public List<Product> getTodosProduto() {
 		return todosProduto;
 	}
 	
-	public void setTodosProduto(List<Produto> todosProduto) {
+	public void setTodosProduto(List<Product> todosProduto) {
 		this.todosProduto = todosProduto;
 	}
 

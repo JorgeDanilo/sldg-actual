@@ -5,7 +5,11 @@
 	<persistence-unit name="SistemaLanchesDaniloGessica">
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>com.sldg.erp.model.Usuario</class>
+		<class>com.sldg.erp.model.LegalEntity</class>
+		<class>com.sldg.erp.model.NaturalPerson</class>
+		<class>com.sldg.erp.model.Person</class>
+		<class>com.sldg.erp.model.Product</class>
+		<class>com.sldg.erp.model.User</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/sldg?useTimezone=true&amp;serverTimezone=UTC" />
@@ -13,7 +17,7 @@
 			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
       		<property name="javax.persistence.schema-generation.create-source" value="metadata" />
       		
 			<property name="hibernate.show_sql" value="true" />

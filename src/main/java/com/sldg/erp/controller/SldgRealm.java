@@ -16,7 +16,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import com.sldg.erp.model.Usuario;
+import com.sldg.erp.model.User;
 import com.sldg.erp.service.UsuarioService;
 
 /**
@@ -59,7 +59,7 @@ public class SldgRealm extends AuthorizingRealm {
 
 		final UsernamePasswordToken passwordToken = (UsernamePasswordToken) token;
 		
-		Usuario usuario = null;
+		User usuario = null;
 		
 		System.out.println(passwordToken.getUsername());
 		

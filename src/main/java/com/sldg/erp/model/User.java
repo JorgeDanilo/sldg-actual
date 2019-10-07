@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
 
@@ -17,11 +18,12 @@ import org.hibernate.annotations.NaturalId;
  */
 
 @Entity
-public class Usuario {
+@Table(name="user")
+public class User {
 
 	@Id
 	@GeneratedValue
-	private Long codigo;
+	private Long id;
 	
 	@NaturalId
 	@Column(name="email", length= 100)
@@ -31,12 +33,12 @@ public class Usuario {
 	@Column(length=100)
 	private String senha;
 
-	public Long getCodigo() {
-		return codigo;
+	public Long getId() {
+		return id;
 	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getEmail() {

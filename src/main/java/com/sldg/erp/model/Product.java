@@ -9,6 +9,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,7 +23,8 @@ import com.sldg.erp.model.enuns.TipoCategoria;
  *
  */
 @Entity
-public class Produto {
+@Table(name="product")
+public class Product {
 
 	@Id
 	@GeneratedValue
@@ -117,7 +119,7 @@ public class Produto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
+		Product other = (Product) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
