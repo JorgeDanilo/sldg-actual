@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head/>
+	<ui:define name="corpo">
+
+		<f:metadata>
+			<f:viewAction action="#{produtoController.listaProdutos}" />
+		</f:metadata>
+
+		<h1 style="margin-top: 30px;">Pesquisa de Produtos</h1>
+		
+		<h:form id="frm">
+
+		<h:panelGrid columns="2" style="margin-top:25px;">
+			
+			<p:outputLabel value="Nome Produto" for="nomeProduto" />
+			<p:inputText id="nomeProduto" size="40" maxlength="100" value="#{produtoController.produtoEdicao.nomeProduto}"/>
+
+			<p:outputLabel value="Marca Produto" for="marcaProduto" />
+			<p:inputText id="marcaProduto" size="40" maxlength="100" value="#{produtoController.produtoEdicao.marcaProduto}"/>
+
+
+		</h:panelGrid>
+		
+		<h:panelGrid columns="3" id="botoesPesquisa">
+			<p:commandButton value="Pesquisar" style="background-color: green; margin-top: 10px;margin-left: 150px;" action="#{produtoController.pesquisaProduto}">
+				<f:ajax execute="@all"/>
+			</p:commandButton>
+			<p:commandButton value="Voltar" style="margin-top: 10px;"/>
+			<p:commandButton value="IR CAIXA" style="background-color: red;margin-top: 10px;"/>
+		</h:panelGrid>
+		
+		<p:dataTable emptyMessage="Nenhum Produto Encontrado!" id="tabelaProdutos"
+			 var="produto" value="#{produtoController.todosProduto}" style="margin-top: 10px;"
+			 paginator="true" rows="7">
+			
+			<p:column headerText="Código">
+				<p:outputLabel value="#{produto.codigo}"/>
+			</p:column>
+			
+			<p:column headerText="Nome Produto">
+				<p:outputLabel value="#{produto.nomeProduto}"/>
+			</p:column>
+			
+			<p:column headerText="Marca Produto">
+				<p:outputLabel value="#{produto.marcaProduto}"/>
+			</p:column>
+			
+			<p:column headerText="Valor Produto">
+				<p:outputLabel value="#{produto.valorProduto}"/>
+			</p:column>
+			
+			<p:column headerText="Tipo Categoria">
+				<p:outputLabel value="#{produto.tipoCategoria}"/>
+			</p:column>
+			
+			<p:column headerText="Data Vencimento">
+				<p:outputLabel value="#{produto.dataVencimento}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</p:outputLabel>
+			</p:column>
+			
+			<p:column headerText="Ações">
+				<h:outputText value="Comprar?" />
+      			  <p:selectBooleanCheckbox id="compraproduto" value="#{produtoController.marcarProduto}">
+      			  	<p:ajax listener="#{produtoController.marcarProdutosCompra}" />
+      			  </p:selectBooleanCheckbox>
+			</p:column>
+		</p:dataTable>
+		
+		</h:form>
+	</ui:define>
+</ui:composition>

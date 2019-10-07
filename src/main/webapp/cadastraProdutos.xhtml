@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head />
+	<ui:define name="corpo">
+	<h1 style="margin-top: 20px;">Cadastro de Produtos</h1>
+	
+	<h:form id="frmProduto">
+		<p:growl id="growl" showDetail="false" showSummary="true" autoUpdate="true"/>  
+		<h:panelGrid columns="2" style="magin-top:20px;">
+		
+			<p:outputLabel for="nomeProdutos" value="Nome Produto"/>
+			<p:inputText id="nomeProdutos" required="true" maxlength="100" requiredMessage="O campo Produto é Obrigatório" size="50" value="#{produtoController.produtoEdicao.nomeProduto}">
+				<f:ajax event="blur"/>
+			</p:inputText>
+			
+			<p:outputLabel for="marcaProduto" value="Marca Produto"/>
+			<p:inputText id="marcaProduto" size="50" required="true" requiredMessage="O campo Marca é Obrigatório" maxlength="100" value="#{produtoController.produtoEdicao.marcaProduto}">
+				<f:ajax event="blur"/>
+			</p:inputText>
+
+			<p:outputLabel for="tipoPesoComprado" value="Tipo de Peso Comprado"/>
+			<p:selectOneMenu id="tipoPesoComprado" value="#{produtoController.produtoEdicao.tipoCategoria}">
+				<f:selectItem itemLabel="Selecione"/>
+				<f:selectItems value="#{produtoController.tipoCategorias}" var="tipo" itemLabel="#{tipo.descricao}" itemValue="#{tipoCategoria}">
+				</f:selectItems>
+			</p:selectOneMenu>
+			
+			<p:outputLabel for="valorProduto" value="Valor"/>
+			<p:inputText id="valorProduto" required="true" requiredMessage="O campo Valor é Obrigatório" value="#{produtoController.produtoEdicao.valorProduto}" styleClass="moeda">				
+			</p:inputText>
+			
+			<p:outputLabel for="dataVencimento" value="Data de Vencimento"/>
+			<p:calendar id="dataVencimento" pattern="dd/MM/yyyy" value="#{produtoController.produtoEdicao.dataVencimento}">
+			</p:calendar>
+
+			
+		</h:panelGrid>
+		
+			<p:commandButton value="Cadastrar" style="background-color: green; margin-top: 25px; margin-left: 350px;" action="#{produtoController.salvar}"/>
+			<p:commandButton value="Voltar" style="background-color: red; margin-top: 25px; margin-left: 10px;"/>
+			
+	</h:form>
+	</ui:define>
+</ui:composition>
