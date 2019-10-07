@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import com.sldg.erp.model.enuns.EnumStatus;
+
 @MappedSuperclass
 public abstract class AbstractEntity<T extends Serializable> implements SimpleModel<T> {
 

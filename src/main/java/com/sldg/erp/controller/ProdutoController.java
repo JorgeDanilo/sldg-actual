@@ -12,7 +12,7 @@ import org.primefaces.context.RequestContext;
 
 import com.sldg.erp.model.Product;
 import com.sldg.erp.model.enuns.TipoCategoria;
-import com.sldg.erp.repository.Produtos;
+import com.sldg.erp.repository.ProdutoRespository;
 import com.sldg.erp.service.ProdutoService;
 import com.sldg.erp.util.FacesMessages;
 
@@ -23,7 +23,7 @@ public class ProdutoController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private Produtos produtos;
+	private ProdutoRespository produtos;
 
 	@Inject
 	private ProdutoService produtoService;
@@ -65,11 +65,11 @@ public class ProdutoController implements Serializable {
 		return TipoCategoria.values();
 	}
 	
-	public Produtos getProdutos() {
+	public ProdutoRespository getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(Produtos produtos) {
+	public void setProdutos(ProdutoRespository produtos) {
 		this.produtos = produtos;
 	}
 

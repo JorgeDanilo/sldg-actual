@@ -1,4 +1,4 @@
-package com.sldg.erp.model;
+package com.sldg.erp.model.enuns;
 
 public enum EnumStatus {
 	

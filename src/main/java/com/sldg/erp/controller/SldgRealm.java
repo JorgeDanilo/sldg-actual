@@ -40,35 +40,21 @@ public class SldgRealm extends AuthorizingRealm {
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(final PrincipalCollection principals) {
-		
-		if ( principals != null ) {
-			
+		if (principals != null)
 			throw new AuthenticationException();
-			
-		}
-		
 		SimpleAuthorizationInfo authorization = new SimpleAuthorizationInfo();
-		
 		authorization.setRoles((Set<String>) getSubject().getSession().getAttribute(ROLES_SESSION_STRING));
-		
 		return authorization;
 	}
 
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(final AuthenticationToken token) throws AuthenticationException {
-
 		final UsernamePasswordToken passwordToken = (UsernamePasswordToken) token;
-		
 		User usuario = null;
-		
 		System.out.println(passwordToken.getUsername());
-		
 		System.out.println(passwordToken.getPassword());
-		
-		usuario = usuarioService.autenticar(passwordToken.getUsername(), new String(passwordToken.getPassword()));
-		
+//		usuario = usuarioService.autenticar(passwordToken.getUsername(), new String(passwordToken.getPassword()));
 		getSubject().getSession().setAttribute(USER_SESSION, usuario );
-		
 		return new SimpleAuthenticationInfo(usuario.getEmail(), passwordToken.getPassword(), REALM_NAME);
 	}
 

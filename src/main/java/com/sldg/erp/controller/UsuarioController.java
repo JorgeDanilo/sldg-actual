@@ -15,7 +15,7 @@ import javax.inject.Named;
 import org.primefaces.context.RequestContext;
 
 import com.sldg.erp.model.User;
-import com.sldg.erp.repository.Usuarios;
+import com.sldg.erp.repository.UsuarioRepository;
 import com.sldg.erp.service.UsuarioService;
 import com.sldg.erp.util.FacesMessages;
 
@@ -36,7 +36,7 @@ public class UsuarioController implements Serializable {
 	private List<User> todosUsuarios;
 	
 	@Inject
-	private Usuarios usuarios;
+	private UsuarioRepository usuarios;
 
 	@Inject
 	private FacesMessages messages;
@@ -74,13 +74,13 @@ public class UsuarioController implements Serializable {
 	 * @author Danilo e Gessica 
 	 */
 	public void consultar() {
-		this.todosUsuarios = usuarios.listaUsuario();
+		this.todosUsuarios = usuarios.findAll();
 		RequestContext.getCurrentInstance().update(Arrays.asList("frm:tabela-usuarios"));
 	}
 	
 	public void pesquisaUsuario() {
-		if(usuarioEdicao.getCodigo()!= null || usuarioEdicao.getEmail() != "") {
-			this.todosUsuarios = usuarios.pesquisaUsuarios(usuarioEdicao);
+		if(usuarioEdicao.getEmail() != "") {
+			this.todosUsuarios = usuarios.findByEmailAndCode(usuarioEdicao);
 			RequestContext.getCurrentInstance().update(Arrays.asList("frm:tabela-usuarios"));
 		} else {
 			consultar();
@@ -121,11 +121,11 @@ public class UsuarioController implements Serializable {
 		this.messages = messages;
 	}
 	
-	 public Usuarios getUsuarios() {
+	 public UsuarioRepository getUsuarios() {
 		return usuarios;
 	}
 	 
-	 public void setUsuarios(Usuarios usuarios) {
+	 public void setUsuarios(UsuarioRepository usuarios) {
 		this.usuarios = usuarios;
 	}
 	 

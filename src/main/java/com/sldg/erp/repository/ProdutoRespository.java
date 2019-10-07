@@ -13,48 +13,23 @@ import org.hibernate.criterion.Restrictions;
 
 import com.sldg.erp.model.Product;
 
-public class Produtos implements Serializable {
+public class ProdutoRespository implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private EntityManager manager;
+	private EntityManager manager;	
 	
 	public Product guardar(Product produto) {
 		return this.manager.merge(produto);
 	}
 	
-	/**
-	 * 
-	 * Método responsavel por listar todos os produtos
-	 * 
-	 * @author Danilo e Gessica
-	 *  
-	 * @since 22/11/2015
-	 * 
-	 * @return
-	 */
 	public List<Product> listaProduto() {
 		Session session = (Session) this.manager.getDelegate();
 		Criteria criteria = session.createCriteria(Product.class);
-		
 		return criteria.list();
 	}
 	
-	
-	/**
-	 * Método responsavel por pesquisar os produtos por nome
-	 * 
-	 * @author Danilo e Gessica
-	 * 
-	 * @since 22/11/2015
-	 * 
-	 * @param produto
-	 * @return
-	 */
 	public List<Product> pesquisaProdutos(Product produto) {
 		Session session = (Session) this.manager.getDelegate();
 		Criteria criteria = session.createCriteria(Product.class);

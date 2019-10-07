@@ -8,6 +8,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import com.sldg.erp.model.enuns.EnumSex;
+
 @Entity
 @Table(name = "person")
 @Inheritance(strategy = InheritanceType.JOINED)
