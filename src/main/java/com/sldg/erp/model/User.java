@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
@@ -32,6 +33,10 @@ public class User {
 	@NaturalId
 	@Column(length=100)
 	private String senha;
+	
+	@OneToOne
+	@Column(name="person_id")
+	private Person person;
 
 	public Long getId() {
 		return id;
@@ -55,6 +60,14 @@ public class User {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public Person getPerson() {
+		return person;
+	}
+	
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 	
 }

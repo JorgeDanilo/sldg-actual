@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import org.hibernate.Criteria;
@@ -19,6 +21,8 @@ public class UsuarioRepository implements Serializable {
 	
 	@Inject
 	private EntityManager manager;
+	
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("SistemaLanchesDaniloGessica");
 	
 	public User findByCode(Long codigo) {
 		return manager.find(User.class, codigo);
