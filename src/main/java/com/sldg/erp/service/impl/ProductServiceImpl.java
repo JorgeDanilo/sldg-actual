@@ -1,4 +1,4 @@
-package com.sldg.erp.service;
+package com.sldg.erp.service.impl;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import com.sldg.erp.model.Product;
 import com.sldg.erp.repository.ProdutoRespository;
 import com.sldg.erp.util.Transacional;
 
-public class ProdutoService implements Serializable {
+public class ProductServiceImpl implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

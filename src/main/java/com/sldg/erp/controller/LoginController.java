@@ -18,7 +18,7 @@ import javax.faces.context.ExternalContext;
 
 import com.sldg.erp.model.User;
 import com.sldg.erp.repository.UsuarioRepository;
-import com.sldg.erp.service.UsuarioService;
+import com.sldg.erp.service.impl.LoginServiceImpl;
 
 @Named
 @ViewScoped
@@ -30,7 +30,7 @@ public class LoginController implements Serializable {
 	private UsuarioRepository usuarios;
 	
 	@Inject
-	private UsuarioService usuarioService;
+	private LoginServiceImpl usuarioService;
 	
 	private User usuario = new User();
 	
@@ -56,11 +56,11 @@ public class LoginController implements Serializable {
 		this.usuarios = usuarios;
 	}
 
-	public UsuarioService getUsuarioService() {
+	public LoginServiceImpl getUsuarioService() {
 		return usuarioService;
 	}
 
-	public void setUsuarioService(UsuarioService usuarioService) {
+	public void setUsuarioService(LoginServiceImpl usuarioService) {
 		this.usuarioService = usuarioService;
 	}
 

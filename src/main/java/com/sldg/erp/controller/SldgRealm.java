@@ -17,7 +17,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import com.sldg.erp.model.User;
-import com.sldg.erp.service.UsuarioService;
+import com.sldg.erp.service.impl.LoginServiceImpl;
 
 /**
  * @author Jorge Danilo Gomes
@@ -32,7 +32,7 @@ public class SldgRealm extends AuthorizingRealm {
 	private static final String REALM_NAME = "SldgRealm";
 	
 //	@Inject
-	private UsuarioService usuarioService = new UsuarioService();
+	private LoginServiceImpl usuarioService = new LoginServiceImpl();
 	
 	public SldgRealm() {
 		this.setName(REALM_NAME);

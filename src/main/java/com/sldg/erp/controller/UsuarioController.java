@@ -16,7 +16,7 @@ import org.primefaces.context.RequestContext;
 
 import com.sldg.erp.model.User;
 import com.sldg.erp.repository.UsuarioRepository;
-import com.sldg.erp.service.UsuarioService;
+import com.sldg.erp.service.impl.LoginServiceImpl;
 import com.sldg.erp.util.FacesMessages;
 
 @Named
@@ -29,7 +29,7 @@ public class UsuarioController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private UsuarioService usuarioService;
+	private LoginServiceImpl usuarioService;
 
 	private User usuarioEdicao = new User();
 	
@@ -95,11 +95,11 @@ public class UsuarioController implements Serializable {
 		}
 	}
 	
-	public UsuarioService getUsuarioService() {
+	public LoginServiceImpl getUsuarioService() {
 		return usuarioService;
 	}
 
-	public void setUsuarioService(UsuarioService usuarioService) {
+	public void setUsuarioService(LoginServiceImpl usuarioService) {
 		this.usuarioService = usuarioService;
 	}
 
