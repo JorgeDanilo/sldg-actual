@@ -5,13 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
-
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 import com.sldg.erp.model.User;
 
@@ -34,13 +28,13 @@ public class UsuarioRepository implements Serializable {
 	 * query.getResultList(); }
 	 */
 	
-	public User autentica(User usuario) {
-		Session session = (Session) manager.getDelegate();
-		Criteria criteria = session.createCriteria(User.class);
-		criteria.add(Restrictions.eq("email", usuario.getEmail().trim()));
-		criteria.add(Restrictions.eq("senha", usuario.getSenha().trim()));
-		return (User) criteria.uniqueResult();
-	}
+	/*
+	 * public User autentica(User usuario) { Session session = (Session)
+	 * manager.getDelegate(); Criteria criteria =
+	 * session.createCriteria(User.class); criteria.add(Restrictions.eq("email",
+	 * usuario.getEmail().trim())); criteria.add(Restrictions.eq("senha",
+	 * usuario.getSenha().trim())); return (User) criteria.uniqueResult(); }
+	 */
 	
 	/*
 	 * public User autenticar(final String user, final String senha) {
@@ -61,13 +55,7 @@ public class UsuarioRepository implements Serializable {
 		return query.getResultList();
 	}
 	
-	public List<User> findByEmailAndCode(User usuario) {
-		Query query = manager.createQuery("from User where email = :pemail and codigo = :pcodigo");
-		query.setParameter("pemail", usuario.getEmail());
-		query.setParameter("pcodigo", usuario.getSenha());
-		List<User> usuarios = query.getResultList();
-		return usuarios;
-	}
+	/*	*/
 
 }
 

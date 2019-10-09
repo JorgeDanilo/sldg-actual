@@ -8,8 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.NaturalId;
-
 /**
  * Classe Modelo que representa o modelo de um usuario
  * 
@@ -20,55 +18,53 @@ import org.hibernate.annotations.NaturalId;
  */
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	@NaturalId
-	@Column(name="email", length= 100)
-	private String email;
 
-	@NaturalId
-	@Column(length=100)
-	private String senha;
-	
+	@Column(name = "username")
+	private String userName;
+
+	@Column(name = "password")
+	private String password;
+
 	@OneToOne
-	@JoinColumn(name="person_id")
+	@JoinColumn(name = "person_id")
 	private Person person;
 
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	
+
 	public Person getPerson() {
 		return person;
 	}
-	
+
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-	
+
 }

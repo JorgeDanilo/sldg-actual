@@ -55,7 +55,7 @@ public class SldgRealm extends AuthorizingRealm {
 		System.out.println(passwordToken.getPassword());
 //		usuario = usuarioService.autenticar(passwordToken.getUsername(), new String(passwordToken.getPassword()));
 		getSubject().getSession().setAttribute(USER_SESSION, usuario );
-		return new SimpleAuthenticationInfo(usuario.getEmail(), passwordToken.getPassword(), REALM_NAME);
+		return new SimpleAuthenticationInfo(usuario.getUserName(), passwordToken.getPassword(), REALM_NAME);
 	}
 
 }

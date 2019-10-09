@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -18,39 +19,42 @@ import com.sldg.erp.model.enuns.TipoCategoria;
 /**
  * 
  * Classe Modelo que representa um produto
+ * 
  * @author Danilo e Gessica
  * @since 21/11/2015
  *
  */
 @Entity
-@Table(name="product")
+@Table(name = "product")
 public class Product {
 
 	@Id
-	@GeneratedValue
-	private Long codigo;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-	@Column(name = "nomeProduto")
+	@Column(name = "nome_produto")
 	private String nomeProduto;
 
-	@Column(name = "marcaProduto")
+	@Column(name = "marca_produto")
 	private String marcaProduto;
 
-	@Column(name = "valorProduto")
+	@Column(name = "valor_produto")
 	private BigDecimal valorProduto;
 
 	@Enumerated(EnumType.STRING)
+	@Column(name = "tipo_categoria")
 	private TipoCategoria tipoCategoria;
 
 	@Temporal(TemporalType.DATE)
+	@Column(name = "data_vencimento")
 	private Date dataVencimento;
 
-	public Long getCodigo() {
-		return codigo;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNomeProduto() {
@@ -91,63 +95,6 @@ public class Product {
 
 	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result
-				+ ((dataVencimento == null) ? 0 : dataVencimento.hashCode());
-		result = prime * result
-				+ ((marcaProduto == null) ? 0 : marcaProduto.hashCode());
-		result = prime * result
-				+ ((nomeProduto == null) ? 0 : nomeProduto.hashCode());
-		result = prime * result
-				+ ((tipoCategoria == null) ? 0 : tipoCategoria.hashCode());
-		result = prime * result
-				+ ((valorProduto == null) ? 0 : valorProduto.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		if (dataVencimento == null) {
-			if (other.dataVencimento != null)
-				return false;
-		} else if (!dataVencimento.equals(other.dataVencimento))
-			return false;
-		if (marcaProduto == null) {
-			if (other.marcaProduto != null)
-				return false;
-		} else if (!marcaProduto.equals(other.marcaProduto))
-			return false;
-		if (nomeProduto == null) {
-			if (other.nomeProduto != null)
-				return false;
-		} else if (!nomeProduto.equals(other.nomeProduto))
-			return false;
-		if (tipoCategoria != other.tipoCategoria)
-			return false;
-		if (valorProduto == null) {
-			if (other.valorProduto != null)
-				return false;
-		} else if (!valorProduto.equals(other.valorProduto))
-			return false;
-		return true;
 	}
 
 }

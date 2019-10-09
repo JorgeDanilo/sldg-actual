@@ -10,6 +10,8 @@
 		<class>com.sldg.erp.model.Person</class>
 		<class>com.sldg.erp.model.Product</class>
 		<class>com.sldg.erp.model.User</class>
+		<class>com.sldg.erp.model.Employee</class>
+		<class>com.sldg.erp.model.Department</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/sldg?useTimezone=true&amp;serverTimezone=UTC" />

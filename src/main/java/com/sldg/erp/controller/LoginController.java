@@ -35,7 +35,7 @@ public class LoginController implements Serializable {
 	private User usuario = new User();
 	
 	public void autenticar() {
-		getSubject().login(new UsernamePasswordToken(this.usuario.getEmail(), this.usuario.getSenha()));
+//		getSubject().login(new UsernamePasswordToken(this.usuario.getEmail(), this.usuario.getSenha()));
 		final ExternalContext cxt = this.getContext().getExternalContext();
 		try {
 			cxt.redirect(cxt.getRequestContextPath() + "/pesquisaProdutos.jsf");

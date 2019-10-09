@@ -21,11 +21,11 @@ public class UsuarioService implements Serializable {
 	}
 	
 	public void autenticar(User usuario) {
-		if ("".equals(usuario.getSenha()) || "".equals(usuario.getEmail())) {
-			throw new RuntimeException("Usuário ou senhas não informado");
-		} else {
-			usuarioRepository.autentica(usuario);
-		}
+//		if ("".equals(usuario.getSenha()) || "".equals(usuario.getEmail())) {
+//			throw new RuntimeException("Usuário ou senhas não informado");
+//		} else {
+//			usuarioRepository.autentica(usuario);
+//		}
 	}
 	
 }

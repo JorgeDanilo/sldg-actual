@@ -78,15 +78,15 @@ public class UsuarioController implements Serializable {
 		RequestContext.getCurrentInstance().update(Arrays.asList("frm:tabela-usuarios"));
 	}
 	
-	public void pesquisaUsuario() {
-		if(usuarioEdicao.getEmail() != "") {
-			this.todosUsuarios = usuarios.findByEmailAndCode(usuarioEdicao);
-			RequestContext.getCurrentInstance().update(Arrays.asList("frm:tabela-usuarios"));
-		} else {
-			consultar();
-		}
-		
-	}
+//	public void pesquisaUsuario() {
+//		if(usuarioEdicao.getEmail() != "") {
+//			this.todosUsuarios = usuarios.findByEmailAndCode(usuarioEdicao);
+//			RequestContext.getCurrentInstance().update(Arrays.asList("frm:tabela-usuarios"));
+//		} else {
+//			consultar();
+//		}
+//		
+//	}
 
 	public void validarEmail(FacesContext fc, UIComponent component, Object value) throws ValidatorException {
 		String email = value.toString();

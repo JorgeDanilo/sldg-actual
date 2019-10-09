@@ -18,7 +18,7 @@ public abstract class Person extends AbstractEntity<Long> {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "genger")
+	@Column(name = "gender")
 	@Enumerated(EnumType.STRING)
 	private EnumSex gender;
 
