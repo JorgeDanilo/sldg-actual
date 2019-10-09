@@ -22,8 +22,6 @@ public class UsuarioRepository implements Serializable {
 	@Inject
 	private EntityManager manager;
 	
-	EntityManagerFactory factory = Persistence.createEntityManagerFactory("SistemaLanchesDaniloGessica");
-	
 	public User findByCode(Long codigo) {
 		return manager.find(User.class, codigo);
 	}
