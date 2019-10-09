@@ -21,6 +21,7 @@ public class LoginRepositoryImpl implements LoginRepository<User> {
 		Criteria criteria = session.createCriteria(User.class);
 		criteria.add(Restrictions.eq("username", user.getUserName().trim()));
 		criteria.add(Restrictions.eq("password", user.getPassword().trim()));
+		criteria.add(Restrictions.eq("status", user.getPerson().getStatus()));
 		return (User) criteria.uniqueResult();
 	}
 	
