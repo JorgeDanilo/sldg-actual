@@ -55,8 +55,6 @@ public class UserRepository implements Serializable {
 		return query.getResultList();
 	}
 	
-	/*	*/
-
 }
 
 

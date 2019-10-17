@@ -4,9 +4,9 @@ public interface BaseController<T> {
 
 	void initialize();
 	
-	void seach(T t);
+	void seach();
 	
-	void save(T t);
+	void save();
 	
-	void delete(Long id);
+	void delete();
 }

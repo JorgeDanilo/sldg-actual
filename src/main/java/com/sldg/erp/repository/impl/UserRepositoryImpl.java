@@ -16,16 +16,22 @@ public class UserRepositoryImpl implements Serializable {
 	@Inject
 	private EntityManager manager;
 
-	public User findByCode(Long codigo) {
-		return manager.find(User.class, codigo);
+	public User findById(Long id) {
+		return manager.find(User.class, id);
 	}
 
-	public User save(User usuario) {
-		return manager.merge(usuario);
+	public User save(User user) {
+		return manager.merge(user);
+	}
+	
+	public void delete(Long id) {
+		User user = this.findById(id);
+		if (user != null)
+			manager.remove(user);
 	}
 
 	public List<User> findAll() {
-		Query query = manager.createQuery("from Usuario", User.class);
+		Query query = manager.createQuery("from User", User.class);
 		return query.getResultList();
 	}
 

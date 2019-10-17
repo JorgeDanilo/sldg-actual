@@ -16,16 +16,16 @@
 			
 			<h:panelGrid columns="2" style="margin-top: 20px;">
 				<p:outputLabel value="Email" for="email"/>
-				<p:inputText id="email" value="#{usuarioController.usuarioEdicao.email}" validator="#{usuarioController.validarEmail}" maxlength="100" required="true" requiredMessage="O campo email é obrigatório">
+				<p:inputText id="email" value="#{userController.user.email}" validator="#{userController.validarEmail}" maxlength="100" required="true" requiredMessage="O campo email é obrigatório">
 					<f:ajax event="blur"/>
 				</p:inputText>
 				
 				<p:outputLabel value="Senha" for="senha"/>
-				<p:password id="senha" value="#{usuarioController.usuarioEdicao.senha}" required="true" maxlength="20" requiredMessage="O campo Senha é obrigatório"/>
+				<p:password id="senha" value="#{userController.user.senha}" required="true" maxlength="20" requiredMessage="O campo Senha é obrigatório"/>
 				
 			</h:panelGrid>
 			
-			<p:commandButton value="Cadastrar" style="background-color: green; margin-top: 10px; margin-left: 140px;" action="#{usuarioController.salvar}"/>
+			<p:commandButton value="Cadastrar" style="background-color: green; margin-top: 10px; margin-left: 140px;" action="#{userController.save}"/>
 			
 		</h:form>
 		
