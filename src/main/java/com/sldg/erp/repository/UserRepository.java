@@ -9,7 +9,7 @@ import javax.persistence.Query;
 
 import com.sldg.erp.model.User;
 
-public class UsuarioRepository implements Serializable {
+public class UserRepository implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

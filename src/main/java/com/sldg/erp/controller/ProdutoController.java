@@ -1,6 +1,5 @@
 package com.sldg.erp.controller;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,20 +9,19 @@ import javax.inject.Named;
 
 import org.primefaces.context.RequestContext;
 
+import com.sldg.erp.controller.impl.ProductController;
 import com.sldg.erp.model.Product;
 import com.sldg.erp.model.enuns.TipoCategoria;
-import com.sldg.erp.repository.ProdutoRespository;
+import com.sldg.erp.repository.ProductRespository;
 import com.sldg.erp.service.impl.ProductServiceImpl;
 import com.sldg.erp.util.FacesMessages;
 
 @Named
 @ViewScoped
-public class ProdutoController implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class ProdutoController implements ProductController<Product> {
 
 	@Inject
-	private ProdutoRespository produtos;
+	private ProductRespository produtos;
 
 	@Inject
 	private ProductServiceImpl produtoService;
@@ -37,9 +35,6 @@ public class ProdutoController implements Serializable {
 	
 	private Boolean marcarProduto;
 	
-	/**
-	 * TODO: implementar;
-	 */
 	public void marcarProdutosCompra() {
 		System.out.println("Aceitou Comprar Produto: " + this.marcarProduto);
 		System.out.println("Nome Produto: " + this.produtoEdicao.getNomeProduto());
@@ -65,11 +60,11 @@ public class ProdutoController implements Serializable {
 		return TipoCategoria.values();
 	}
 	
-	public ProdutoRespository getProdutos() {
+	public ProductRespository getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(ProdutoRespository produtos) {
+	public void setProdutos(ProductRespository produtos) {
 		this.produtos = produtos;
 	}
 

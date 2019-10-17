@@ -13,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.sldg.erp.model.Product;
 
-public class ProdutoRespository implements Serializable {
+public class ProductRespository implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

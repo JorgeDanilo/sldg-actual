@@ -17,7 +17,7 @@ import org.jboss.weld.security.GetSystemPropertyAction;
 import javax.faces.context.ExternalContext;
 
 import com.sldg.erp.model.User;
-import com.sldg.erp.repository.UsuarioRepository;
+import com.sldg.erp.repository.UserRepository;
 import com.sldg.erp.service.impl.LoginServiceImpl;
 
 @Named
@@ -27,7 +27,7 @@ public class LoginController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private UsuarioRepository usuarios;
+	private UserRepository usuarios;
 	
 	@Inject
 	private LoginServiceImpl usuarioService;
@@ -48,11 +48,11 @@ public class LoginController implements Serializable {
 		return false;
 	}
 
-	public UsuarioRepository getUsuarios() {
+	public UserRepository getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(UsuarioRepository usuarios) {
+	public void setUsuarios(UserRepository usuarios) {
 		this.usuarios = usuarios;
 	}
 
